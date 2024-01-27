@@ -1,6 +1,5 @@
 import { Todo } from "@/hooks/useTodo";
 import { Card, Flex, Table, TableBody, TableCell, TableHead, TableHeaderCell, TableRow, Title } from "@tremor/react";
-import { randomUUID } from "crypto";
 
 interface Props {
     todos: Todo[]
@@ -9,8 +8,8 @@ interface Props {
 
 export default function TodosList({ todos }: Props) {
     return <Card>
-        <Flex flexDirection="row">
-            <Title>Todo</Title>
+        <Flex flexDirection="row" className="mb-6">
+            <Title>Todos List</Title>
             <a className="hover:cursor-pointer mr-6">Add</a>
         </Flex>
         <Table>
@@ -22,8 +21,8 @@ export default function TodosList({ todos }: Props) {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {todos.map((todo: Todo) => (
-                    <TableRow key={randomUUID()}>
+                {todos.map((todo: Todo, idx: number) => (
+                    <TableRow key={idx}>
                         <TableCell>{todo.description}</TableCell>
                         <TableCell>{`${todo.location.lat}, ${todo.location.lng}`}</TableCell>
                         <TableCell><a href="#">Delete</a></TableCell>
