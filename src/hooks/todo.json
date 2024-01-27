@@ -1,0 +1,72 @@
+[
+    {
+        "description": "Task 1",
+        "location": {
+            "lat": -36.8485,
+            "lng": 174.7633
+        }
+    },
+    {
+        "description": "Task 2",
+        "location": {
+            "lat": -36.8625,
+            "lng": 174.5856
+        }
+    },
+    {
+        "description": "Task 3",
+        "location": {
+            "lat": -36.8485,
+            "lng": 174.7437
+        }
+    },
+    {
+        "description": "Task 4",
+        "location": {
+            "lat": -36.8600,
+            "lng": 174.7572
+        }
+    },
+    {
+        "description": "Task 5",
+        "location": {
+            "lat": -36.8485,
+            "lng": 174.7625
+        }
+    },
+    {
+        "description": "Task 6",
+        "location": {
+            "lat": -36.8755,
+            "lng": 174.7794
+        }
+    },
+    {
+        "description": "Task 7",
+        "location": {
+            "lat": -36.8485,
+            "lng": 174.7794
+        }
+    },
+    {
+        "description": "Task 8",
+        "location": {
+            "lat": -36.8708,
+            "lng": 174.7544
+        }
+    },
+    {
+        "description": "Task 9",
+        "location": {
+            "lat": -36.8841,
+            "lng": 174.7680
+        }
+    },
+    {
+        "description": "Task 10",
+        "location": {
+            "lat": -36.8471,
+            "lng": 174.7653
+        }
+    }
+]
