@@ -1,7 +1,6 @@
 import TodosList from "@/components/todosList";
-import useTodo, { Todo } from "@/hooks/useTodo";
-import { Card, Col, Flex, Grid, Table, TableBody, TableCell, TableHead, TableHeaderCell, TableRow, Title } from "@tremor/react";
-import { randomUUID } from "crypto";
+import useTodo from "@/hooks/useTodo";
+import { Card, Col, Grid, Title } from "@tremor/react";
 import dynamic from "next/dynamic";
 import { useMemo } from "react";
 

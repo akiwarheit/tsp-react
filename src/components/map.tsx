@@ -1,12 +1,11 @@
 'use client'
 
 import { Todo } from "@/hooks/useTodo"
-import { randomUUID } from "crypto"
 import { LatLng } from "leaflet"
 import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
 import "leaflet/dist/leaflet.css"
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"
+import { MapContainer, Marker, TileLayer } from "react-leaflet"
 
 export default function Map(props: { position: LatLng, zoom: number, todos: Todo[] }) {
     const { position, zoom, todos } = props
