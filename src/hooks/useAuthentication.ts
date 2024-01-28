@@ -1,7 +1,7 @@
 "use client"
 
 import { initializeApp } from 'firebase/app';
-import { GoogleAuthProvider, User, getAuth, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, User, getAuth, signInWithPopup, signOut } from "firebase/auth";
 import { useCallback, useState } from 'react';
 
 
@@ -26,7 +26,6 @@ export default function useAuthentication() {
 
     const signInWithGoogle = useCallback(() => {
         const auth = getAuth();
-        console.log(process.env.NEXT_FIREBASE_API_KEY)
         signInWithPopup(auth, provider)
             .then((result) => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -42,7 +41,17 @@ export default function useAuthentication() {
             });
     }, [])
 
+    const signOutFromApp = useCallback(() => {
+        const auth = getAuth();
+        signOut(auth).then(result => {
+            setUser(undefined)
+        }).catch(error => {
+            alert(`Something went wrong on logout ${error}`)
+            setUser(undefined)
+        })
+    }, [])
 
 
-    return { signInWithGoogle, user, initialise }
+
+    return { signInWithGoogle, user, initialise, signOutFromApp }
 }

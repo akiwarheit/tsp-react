@@ -19,7 +19,6 @@ export default function Map(props: { position: LatLng, zoom: number, todos: Todo
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position} />
         {todos.map((todo, idx) => <Marker key={idx} position={todo.location} />)}
     </MapContainer>
 }
