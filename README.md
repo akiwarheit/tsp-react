@@ -8,8 +8,8 @@ The goal is to develop an API-driven application that tracks Todo items, each of
 The user interface should 
 - [x] Be a website written in React (and any other supporting libraries you prefer ) OR a mobile app written in React Native or Flutter
 - [x] Allow the creation of Todo items with: a title; a state of “todo”, “scheduled” and “done” and a location
-- [ ] Allow the editing of Todo items
-- [ ] Allow the deletion of Todo items
+- [x] Allow the editing of Todo items
+- [x] Allow the deletion of Todo items
 - [x] Allow viewing the items as a list of items, or on a map
 - [ ] Allow planning the shortest route between items marked as “scheduled” (solving the traveling salesman problem using whichever algorithm you prefer) and display that shortest route
 - [x] Allow signing in and out

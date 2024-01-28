@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { v1 as uuid } from "uuid";
 
 interface LatLng {
     lat: number;
@@ -6,6 +7,7 @@ interface LatLng {
 }
 
 export interface Todo {
+    id: string;
     description: string
     location: LatLng;
     status: "scheduled" | "todo" | "done"
@@ -16,20 +18,28 @@ const examples = require("./todo.json") as Todo[]
 export default function useTodo() {
     const [todos, setTodos] = useState(examples)
 
-    const add = useCallback((todo: Todo) => {
-        const newTodos = [...todos, todo]
-        setTodos(newTodos)
+    const add = useCallback((todo: Partial<Todo>) => {
+        const newTodos = [...todos, { ...todo, id: uuid() }]
+        setTodos(newTodos as Todo[])
     }, [todos])
 
     const remove = useCallback((todo: Todo) => {
-        const newTodos = todos.filter(p => p.description !== todo.description && p.location.lat !== todo.location.lat && p.location.lng !== todo.location.lng && p.status !== todo.status)
+        const newTodos = todos.filter(pred => pred.id !== todo.id)
         setTodos(newTodos)
+    }, [todos])
+
+    const edit = useCallback((todo: Partial<Todo>) => {
+        const { id } = todo
+        console.log(id)
+        const newTodos = todos.filter(pred => pred.id !== id)
+        setTodos([...newTodos, todo] as Todo[])
     }, [todos])
 
 
     return {
         todos,
         remove,
-        add
+        add,
+        edit
     };
 }

@@ -1,5 +1,6 @@
 [
     {
+        "id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
         "description": "Task 1",
         "location": {
             "lat": -36.8485,
@@ -8,6 +9,7 @@
         "status": "todo"
     },
     {
+        "id": "b6d0e4e9-ff39-4df7-a7cb-4f6efcb3a8de",
         "description": "Task 2",
         "location": {
             "lat": -36.8625,
@@ -16,6 +18,7 @@
         "status": "done"
     },
     {
+        "id": "b5a1e8a0-5b6c-43d3-8845-d3449b4008b9",
         "description": "Task 3",
         "location": {
             "lat": -36.8485,
@@ -24,6 +27,7 @@
         "status": "scheduled"
     },
     {
+        "id": "b11a9dbf-c07e-40e1-94f4-7b5d96f4d18e",
         "description": "Task 4",
         "location": {
             "lat": -36.8600,
@@ -32,6 +36,7 @@
         "status": "done"
     },
     {
+        "id": "c01c52e8-20fd-474f-9b3a-7d83673beba1",
         "description": "Task 5",
         "location": {
             "lat": -36.8485,
@@ -40,6 +45,7 @@
         "status": "todo"
     },
     {
+        "id": "f51c4720-2072-4bcb-a514-7b97f5fd5aa9",
         "description": "Task 6",
         "location": {
             "lat": -36.8755,
@@ -48,6 +54,7 @@
         "status": "scheduled"
     },
     {
+        "id": "f1903f5d-69b0-4c6d-bf5c-597de90fb392",
         "description": "Task 7",
         "location": {
             "lat": -36.8485,
@@ -56,6 +63,7 @@
         "status": "done"
     },
     {
+        "id": "a4f6a418-0987-45c1-b0f2-5c43b4d3c971",
         "description": "Task 8",
         "location": {
             "lat": -36.8708,
@@ -64,6 +72,7 @@
         "status": "todo"
     },
     {
+        "id": "c1dc61ff-8c7a-4560-949f-3a2962185eef",
         "description": "Task 9",
         "location": {
             "lat": -36.8841,
@@ -72,6 +81,7 @@
         "status": "scheduled"
     },
     {
+        "id": "e8d1a1f7-c882-402b-918f-b54ef5731cbf",
         "description": "Task 10",
         "location": {
             "lat": -36.8471,
