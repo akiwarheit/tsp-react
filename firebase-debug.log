@@ -1,0 +1,94 @@
+[debug] [2024-01-29T21:50:28.276Z] ----------------------------------------------------------------------
+[debug] [2024-01-29T21:50:28.277Z] Command:       C:\Users\kevin\DOWNLO~1\firebase-tools-instant-win.exe C:\Users\kevin\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\bin\firebase deploy --only hosting
+[debug] [2024-01-29T21:50:28.278Z] CLI Version:   13.1.0
+[debug] [2024-01-29T21:50:28.278Z] Platform:      win32
+[debug] [2024-01-29T21:50:28.278Z] Node Version:  v18.5.0
+[debug] [2024-01-29T21:50:28.278Z] Time:          Tue Jan 30 2024 10:50:28 GMT+1300 (New Zealand Daylight Time)
+[debug] [2024-01-29T21:50:28.278Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-01-29T21:50:28.328Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-29T21:50:28.328Z] > authorizing via signed-in user (kevin@coffeedrivendevelopment.co.nz)
+[debug] [2024-01-29T21:50:28.328Z] [iam] checking project travelling-salesman-57720 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-01-29T21:50:28.330Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/travelling-salesman-57720:testIamPermissions [none]
+[debug] [2024-01-29T21:50:28.330Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/travelling-salesman-57720:testIamPermissions x-goog-quota-user=projects/travelling-salesman-57720
+[debug] [2024-01-29T21:50:28.330Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/travelling-salesman-57720:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-29T21:50:29.441Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/travelling-salesman-57720:testIamPermissions 200
+[debug] [2024-01-29T21:50:29.441Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/travelling-salesman-57720:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-29T21:50:29.442Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/travelling-salesman-57720 [none]
+[debug] [2024-01-29T21:50:30.249Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/travelling-salesman-57720 200
+[debug] [2024-01-29T21:50:30.249Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/travelling-salesman-57720 {"projectId":"travelling-salesman-57720","projectNumber":"38062332553","displayName":"travelling-salesman","name":"projects/travelling-salesman-57720","resources":{"hostingSite":"travelling-salesman-57720"},"state":"ACTIVE","etag":"1_151ebaa9-0e2e-48f9-9e4d-e34753eff347"}
+[debug] [2024-01-29T21:50:32.161Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites pageToken=&pageSize=10
+[debug] [2024-01-29T21:50:32.941Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites 200
+[debug] [2024-01-29T21:50:32.941Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites {"sites":[{"name":"projects/travelling-salesman-57720/sites/travelling-salesman-57720","defaultUrl":"https://travelling-salesman-57720.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2024-01-29T21:50:32.942Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites 
+[debug] [2024-01-29T21:50:34.308Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites 200
+[debug] [2024-01-29T21:50:34.308Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites {"sites":[{"name":"projects/travelling-salesman-57720/sites/travelling-salesman-57720","defaultUrl":"https://travelling-salesman-57720.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2024-01-29T21:50:34.309Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/travelling-salesman-57720/webApps/-/config [none]
+[debug] [2024-01-29T21:50:35.551Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/travelling-salesman-57720/webApps/-/config 200
+[debug] [2024-01-29T21:50:35.551Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/travelling-salesman-57720/webApps/-/config {"projectId":"travelling-salesman-57720","appId":"1:38062332553:web:dfdd99212870f7ea5c8458","storageBucket":"travelling-salesman-57720.appspot.com","apiKey":"AIzaSyBE9hIT9pXt_lGR3O7RLWe5xCdC3y_4q-E","authDomain":"travelling-salesman-57720.firebaseapp.com","messagingSenderId":"38062332553","measurementId":"G-GS3VZ1FH88"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 14.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-01-29T21:50:40.013Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites/travelling-salesman-57720 [none]
+[debug] [2024-01-29T21:50:41.269Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites/travelling-salesman-57720 200
+[debug] [2024-01-29T21:50:41.269Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites/travelling-salesman-57720 {"name":"projects/travelling-salesman-57720/sites/travelling-salesman-57720","defaultUrl":"https://travelling-salesman-57720.web.app","type":"DEFAULT_SITE"}
+[info] You are using Node.js 18.5.0. For Next.js, Node.js version >= v18.17.0 is required.
+
+[debug] [2024-01-29T21:50:41.973Z] Error: ENOENT: no such file or directory, open 'C:\Users\kevin\tsp-react\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2024-01-29T21:51:19.290Z] ----------------------------------------------------------------------
+[debug] [2024-01-29T21:51:19.291Z] Command:       C:\Users\kevin\DOWNLO~1\firebase-tools-instant-win.exe C:\Users\kevin\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\bin\firebase deploy
+[debug] [2024-01-29T21:51:19.291Z] CLI Version:   13.1.0
+[debug] [2024-01-29T21:51:19.292Z] Platform:      win32
+[debug] [2024-01-29T21:51:19.292Z] Node Version:  v18.5.0
+[debug] [2024-01-29T21:51:19.292Z] Time:          Tue Jan 30 2024 10:51:19 GMT+1300 (New Zealand Daylight Time)
+[debug] [2024-01-29T21:51:19.292Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-01-29T21:51:19.341Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-29T21:51:19.341Z] > authorizing via signed-in user (kevin@coffeedrivendevelopment.co.nz)
+[debug] [2024-01-29T21:51:19.341Z] [iam] checking project travelling-salesman-57720 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-01-29T21:51:19.343Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/travelling-salesman-57720:testIamPermissions [none]
+[debug] [2024-01-29T21:51:19.343Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/travelling-salesman-57720:testIamPermissions x-goog-quota-user=projects/travelling-salesman-57720
+[debug] [2024-01-29T21:51:19.343Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/travelling-salesman-57720:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-29T21:51:20.468Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/travelling-salesman-57720:testIamPermissions 200
+[debug] [2024-01-29T21:51:20.468Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/travelling-salesman-57720:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-29T21:51:20.469Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/travelling-salesman-57720 [none]
+[debug] [2024-01-29T21:51:21.031Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/travelling-salesman-57720 200
+[debug] [2024-01-29T21:51:21.031Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/travelling-salesman-57720 {"projectId":"travelling-salesman-57720","projectNumber":"38062332553","displayName":"travelling-salesman","name":"projects/travelling-salesman-57720","resources":{"hostingSite":"travelling-salesman-57720"},"state":"ACTIVE","etag":"1_151ebaa9-0e2e-48f9-9e4d-e34753eff347"}
+[debug] [2024-01-29T21:51:22.933Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites pageToken=&pageSize=10
+[debug] [2024-01-29T21:51:24.368Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites 200
+[debug] [2024-01-29T21:51:24.369Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites {"sites":[{"name":"projects/travelling-salesman-57720/sites/travelling-salesman-57720","defaultUrl":"https://travelling-salesman-57720.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2024-01-29T21:51:24.369Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites 
+[debug] [2024-01-29T21:51:25.700Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites 200
+[debug] [2024-01-29T21:51:25.701Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites {"sites":[{"name":"projects/travelling-salesman-57720/sites/travelling-salesman-57720","defaultUrl":"https://travelling-salesman-57720.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2024-01-29T21:51:25.701Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/travelling-salesman-57720/webApps/-/config [none]
+[debug] [2024-01-29T21:51:26.929Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/travelling-salesman-57720/webApps/-/config 200
+[debug] [2024-01-29T21:51:26.929Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/travelling-salesman-57720/webApps/-/config {"projectId":"travelling-salesman-57720","appId":"1:38062332553:web:dfdd99212870f7ea5c8458","storageBucket":"travelling-salesman-57720.appspot.com","apiKey":"AIzaSyBE9hIT9pXt_lGR3O7RLWe5xCdC3y_4q-E","authDomain":"travelling-salesman-57720.firebaseapp.com","messagingSenderId":"38062332553","measurementId":"G-GS3VZ1FH88"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 14.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-01-29T21:51:31.390Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites/travelling-salesman-57720 [none]
+[debug] [2024-01-29T21:51:32.613Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites/travelling-salesman-57720 200
+[debug] [2024-01-29T21:51:32.613Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/travelling-salesman-57720/sites/travelling-salesman-57720 {"name":"projects/travelling-salesman-57720/sites/travelling-salesman-57720","defaultUrl":"https://travelling-salesman-57720.web.app","type":"DEFAULT_SITE"}
+[info] You are using Node.js 18.5.0. For Next.js, Node.js version >= v18.17.0 is required.
+
+[debug] [2024-01-29T21:51:33.156Z] Error: ENOENT: no such file or directory, open 'C:\Users\kevin\tsp-react\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
