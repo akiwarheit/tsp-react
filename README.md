@@ -11,7 +11,7 @@ The user interface should
 - [x] Allow the editing of Todo items
 - [x] Allow the deletion of Todo items
 - [x] Allow viewing the items as a list of items, or on a map
-- [ ] Allow planning the shortest route between items marked as “scheduled” (solving the traveling salesman problem using whichever algorithm you prefer) and display that shortest route
+- [x] Allow planning the shortest route between items marked as “scheduled” (solving the traveling salesman problem using whichever algorithm you prefer) and display that shortest route
 - [x] Allow signing in and out
 
 The API backend should
@@ -43,3 +43,9 @@ Production Readiness:
 - [x] Dev/prod parity: Keep development, staging, and production as similar as possible
 - [] Logs: Treat logs as event streams
 - [] Admin processes: Run admin/management tasks as one-off processes
+
+Improvements:
+
+- Caching reverse geocode address to avoid being rate limited
+- Pagination
+- Excluding done from recommended path

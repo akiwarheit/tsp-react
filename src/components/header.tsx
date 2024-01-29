@@ -1,5 +1,5 @@
 import { Todo } from "@/hooks/useTodo";
-import { Card, Col, Flex, Grid, Text, Title, Tracker } from "@tremor/react";
+import { Button, Card, Col, Flex, Grid, Text, Title, Tracker } from "@tremor/react";
 import { User } from "firebase/auth";
 import { useMemo } from "react";
 
@@ -26,22 +26,8 @@ export default function Header({ user, todos, onSignOut }: Props) {
         return todos.filter(todo => todo.status !== "done").length / todos.length * 100
     }, [todos])
 
-    return <Grid numItems={6}>
-        <Col numColSpan={6} className="mb-10 p-5">
-            <Flex flexDirection="row">
-                <Title>Welcome, {user.displayName}</Title>
-                <button onClick={onSignOut}>Sign Out</button>
-            </Flex>
-        </Col>
-        <Col numColSpan={6}>
-            <Card>
-                <Title>Status</Title>
-                <Text>{new Date().toLocaleDateString('en-AU')}</Text>
-                <Flex justifyContent="end" className="mt-4">
-                    <Text>{completion}%</Text>
-                </Flex>
-                <Tracker data={data} className="mt-2" />
-            </Card>
-        </Col>
-    </Grid>
+    return <Flex flexDirection="row" className="mb-4 p-5">
+        <Title>Welcome, {user.displayName}</Title>
+        <Button variant="secondary" onClick={onSignOut}>Sign Out</Button>
+    </Flex>
 }

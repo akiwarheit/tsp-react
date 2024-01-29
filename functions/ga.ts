@@ -1,244 +1,119 @@
-class Individual {
-    public chromosomeLength: number;
-    public fitness: number | null;
-    public chromosome: number[];
+/**
+ * https://bitbucket.org/akiwarheit/tsp-react-native/src/master/App/Lib/GeneticAlgorithm.js
+ * 
+ * Each chromosome represents a possible route for the salesman to traverse all the cities. The genes in the chromosome represent the order in which the cities are visited.
+ * The fitness can be inversely proportional to the total distance traveled. The lower the distance, the higher the fitness.
+ * 
+ * Repeated functions:
+ * Crossover: Create offspring by combining the genetic material of two parents. One-point or two-point crossover methods are often used.
+ * Mutation: Introduce small random changes in the offspring to maintain diversity in the population. Mutation can swap or change the order of genes.
+ * Replace: Replace some individuals in the population with the new offspring.
+ * 
+ * The entire evolution keeps track of the best solution based off the fitness function. (least total distance travelled)
+ * 
+ * @param distances 
+ */
+export function evolveOnDistances(distances: number[][]) {
+    class Individual {
+        public chromosome: number[];
+        public fitness: number;
 
-    constructor(chromosomeLength: number) {
-        this.chromosomeLength = chromosomeLength;
-        this.fitness = null;
-        this.chromosome = [];
-    }
-
-    initialize(): void {
-        this.chromosome = [];
-        for (let i = 0; i < this.chromosomeLength; i++) {
-            this.chromosome.push(i);
+        constructor(chromosome: number[]) {
+            this.chromosome = chromosome;
+            this.fitness = this.calculateFitness();
         }
-        for (let i = 0; i < this.chromosomeLength; i++) {
-            const randomIndex = Math.floor(Math.random() * this.chromosomeLength);
-            const tempNode = this.chromosome[randomIndex];
-            this.chromosome[randomIndex] = this.chromosome[i];
-            this.chromosome[i] = tempNode;
-        }
-    }
 
-    setChromosome(chromosome: number[]): void {
-        this.chromosome = chromosome;
-    }
-
-    mutate(): void {
-        this.fitness = null;
-
-        for (let index in this.chromosome) {
-            if (ga.mutationRate > Math.random()) {
-                const randomIndex = Math.floor(Math.random() * this.chromosomeLength);
-                const tempNode = this.chromosome[randomIndex];
-                this.chromosome[randomIndex] = this.chromosome[index];
-                this.chromosome[index] = tempNode;
+        calculateFitness(): number {
+            let totalDistance = 0;
+            for (let i = 0; i < this.chromosome.length - 1; i++) {
+                totalDistance += distances[this.chromosome[i]][this.chromosome[i + 1]];
             }
-        }
-    }
-
-    getDistance(): number {
-        let totalDistance = 0;
-
-        for (let index in this.chromosome) {
-            const startNode = this.chromosome[index];
-            let endNode = this.chromosome[0];
-
-            if (parseInt(index) + 1 < this.chromosome.length) {
-                endNode = this.chromosome[parseInt(index) + 1];
-            }
-
-            totalDistance += durations[startNode][endNode];
+            totalDistance += distances[this.chromosome[this.chromosome.length - 1]][this.chromosome[0]]; // Complete the loop
+            return 1 / totalDistance;
         }
 
-        totalDistance += durations[startNode][endNode];
-
-        return totalDistance;
-    }
-
-    calcFitness(): number {
-        if (this.fitness !== null) {
-            return this.fitness;
-        }
-
-        const totalDistance = this.getDistance();
-        this.fitness = 1 / totalDistance;
-        return this.fitness;
-    }
-
-    crossover(individual: Individual, offspringPopulation: Population): void {
-        const offspringChromosome: number[] = [];
-        const startPos = Math.floor(this.chromosome.length * Math.random());
-        const endPos = Math.floor(this.chromosome.length * Math.random());
-        let i = startPos;
-
-        while (i !== endPos) {
-            offspringChromosome[i] = individual.chromosome[i];
-            i++;
-
-            if (i >= this.chromosome.length) {
-                i = 0;
-            }
-        }
-
-        for (let parentIndex in individual.chromosome) {
-            const node = individual.chromosome[parentIndex];
-            let nodeFound = false;
-
-            for (let offspringIndex in offspringChromosome) {
-                if (offspringChromosome[offspringIndex] == node) {
-                    nodeFound = true;
-                    break;
+        static crossover(parent1: Individual, parent2: Individual): Individual {
+            const startPos = Math.floor(Math.random() * parent1.chromosome.length);
+            const endPos = Math.floor(Math.random() * parent1.chromosome.length);
+            const offspringChromosome = [];
+            for (let i = 0; i < parent1.chromosome.length; i++) {
+                if (startPos < endPos && i > startPos && i < endPos) {
+                    offspringChromosome.push(parent1.chromosome[i]);
+                } else if (startPos > endPos && (i < startPos || i > endPos)) {
+                    offspringChromosome.push(parent1.chromosome[i]);
+                } else if (i === startPos) {
+                    offspringChromosome.push(parent1.chromosome[i]);
                 }
             }
-
-            if (nodeFound === false) {
-                for (let offspringIndex = 0; offspringIndex < individual.chromosome.length; offspringIndex++) {
-                    if (offspringChromosome[offspringIndex] === undefined) {
-                        offspringChromosome[offspringIndex] = node;
-                        break;
-                    }
+            for (let i = 0; i < parent2.chromosome.length; i++) {
+                if (!offspringChromosome.includes(parent2.chromosome[i])) {
+                    offspringChromosome.push(parent2.chromosome[i]);
                 }
+            }
+            return new Individual(offspringChromosome);
+        }
+
+        mutate(): void {
+            const pos1 = Math.floor(Math.random() * this.chromosome.length);
+            const pos2 = Math.floor(Math.random() * this.chromosome.length);
+            [this.chromosome[pos1], this.chromosome[pos2]] = [this.chromosome[pos2], this.chromosome[pos1]]; // Swap positions
+            this.fitness = this.calculateFitness();
+        }
+    }
+
+    class Population {
+        public individuals: Individual[];
+
+        constructor(size: number) {
+            this.individuals = [];
+            for (let i = 0; i < size; i++) {
+                const chromosome = Array.from({ length: distances.length }, (_, index) => index);
+                chromosome.sort(() => Math.random() - 0.5); // Shuffle the chromosome
+                this.individuals.push(new Individual(chromosome));
             }
         }
 
-        const offspring = new Individual(this.chromosomeLength);
-        offspring.setChromosome(offspringChromosome);
-        offspringPopulation.addIndividual(offspring);
+        selectParent(): Individual {
+            return this.individuals[Math.floor(Math.random() * this.individuals.length)];
+        }
+
+        evolve(): void {
+            const newPopulation = [];
+            // Elitism: Keep the best individual from the previous generation
+            newPopulation.push(this.getFittest());
+            while (newPopulation.length < this.individuals.length) {
+                const parent1 = this.selectParent();
+                const parent2 = this.selectParent();
+                const child = Individual.crossover(parent1, parent2);
+                if (Math.random() < 0.1) {
+                    child.mutate();
+                }
+                newPopulation.push(child);
+            }
+            this.individuals = newPopulation;
+        }
+
+        getFittest(): Individual {
+            let fittest = this.individuals[0];
+            for (let i = 1; i < this.individuals.length; i++) {
+                if (this.individuals[i].fitness > fittest.fitness) {
+                    fittest = this.individuals[i];
+                }
+            }
+            return fittest;
+        }
     }
+
+    const populationSize = 50;
+    const generations = 100;
+
+    const population = new Population(populationSize);
+    for (let i = 0; i < generations; i++) {
+        population.evolve();
+    }
+    const bestRoute = population.getFittest();
+    console.log("Best Route:", bestRoute.chromosome);
+    console.log("Total Distance:", 1 / bestRoute.fitness);
+
+    return bestRoute.chromosome
 }
-
-class Population {
-    individuals: Individual[];
-
-    constructor() {
-        this.individuals = [];
-    }
-
-    initialize(chromosomeLength: number): void {
-        this.individuals = [];
-
-        for (let i = 0; i < ga.populationSize; i++) {
-            const newIndividual = new Individual(chromosomeLength);
-            newIndividual.initialize();
-            this.individuals.push(newIndividual);
-        }
-    }
-
-    mutate(): void {
-        const fittestIndex = this.getFittestIndex();
-
-        for (let index in this.individuals) {
-            // @ts-ignore
-            if (ga.elitism !== true || index !== fittestIndex) {
-                this.individuals[index].mutate();
-            }
-        }
-    }
-
-    crossover(): Population {
-        const newPopulation = new Population();
-        const fittestIndex = this.getFittestIndex();
-
-        for (let index in this.individuals) {
-            // @ts-ignore
-            if (ga.elitism === true && index == fittestIndex) {
-                const eliteIndividual = new Individual(this.individuals[index].chromosomeLength);
-                eliteIndividual.setChromosome(this.individuals[index].chromosome.slice());
-                newPopulation.addIndividual(eliteIndividual);
-            } else {
-                const parent = this.tournamentSelection();
-                this.individuals[index].crossover(parent, newPopulation);
-            }
-        }
-
-        return newPopulation;
-    }
-
-    addIndividual(individual: Individual): void {
-        this.individuals.push(individual);
-    }
-
-    tournamentSelection(): Individual {
-        for (let i = 0; i < this.individuals.length; i++) {
-            const randomIndex = Math.floor(Math.random() * this.individuals.length);
-            const tempIndividual = this.individuals[randomIndex];
-            this.individuals[randomIndex] = this.individuals[i];
-            this.individuals[i] = tempIndividual;
-        }
-
-        const tournamentPopulation = new Population();
-
-        for (let i = 0; i < ga.tournamentSize; i++) {
-            tournamentPopulation.addIndividual(this.individuals[i]);
-        }
-
-        return tournamentPopulation.getFittest();
-    }
-
-    getFittestIndex(): number {
-        let fittestIndex = 0;
-
-        for (let i = 1; i < this.individuals.length; i++) {
-            if (this.individuals[i].calcFitness() > this.individuals[fittestIndex].calcFitness()) {
-                fittestIndex = i;
-            }
-        }
-
-        return fittestIndex;
-    }
-
-    getFittest(): Individual {
-        return this.individuals[this.getFittestIndex()];
-    }
-}
-
-const ga = {
-    crossoverRate: 0.5,
-    mutationRate: 0.1,
-    populationSize: 50,
-    tournamentSize: 5,
-    elitism: true,
-    maxGenerations: 50,
-    tickerSpeed: 60,
-
-    evolvePopulationAsync(population: Population, generationCallback: (data: any) => void): Promise<any> {
-        return new Promise((resolve, reject) => {
-            try {
-                this.evolvePopulation(population, generationCallback, (result: any) => resolve(result));
-            } catch (error) {
-                reject({ error: error });
-            }
-        });
-    },
-
-    evolvePopulation(population: Population, generationCallBack: (data: any) => void, completeCallBack: (result: any) => void): void {
-        let generation = 1;
-
-        const evolveInterval = setInterval(() => {
-            if (generationCallBack !== undefined) {
-                generationCallBack({
-                    population: population,
-                    generation: generation,
-                });
-            }
-
-            population = population.crossover();
-            population.mutate();
-            generation++;
-
-            if (generation > ga.maxGenerations) {
-                clearInterval(evolveInterval);
-
-                if (completeCallBack !== undefined) {
-                    completeCallBack({
-                        population: population,
-                        generation: generation,
-                    });
-                }
-            }
-        }, ga.tickerSpeed);
-    },
-};

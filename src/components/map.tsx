@@ -32,7 +32,7 @@ export default function Map(props: { position: LatLng, zoom: number, todos: Todo
     return <MapContainer center={position} zoom={zoom} scrollWheelZoom={false}
         style={{
             height: '70vh',
-            width: '45vw'
+            width: '93vw'
         }}>
         <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

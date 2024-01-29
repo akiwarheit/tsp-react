@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { v1 as uuid } from "uuid";
 
-interface LatLng {
+export interface LatLng {
     lat: number;
     lng: number;
 }
@@ -30,7 +30,6 @@ export default function useTodo() {
 
     const edit = useCallback((todo: Partial<Todo>) => {
         const { id } = todo
-        console.log(id)
         const newTodos = todos.filter(pred => pred.id !== id)
         setTodos([...newTodos, todo] as Todo[])
     }, [todos])

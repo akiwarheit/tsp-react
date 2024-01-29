@@ -1,7 +1,9 @@
+import useReverseGeocode from "@/hooks/useReverseGeocode";
 import { Todo } from "@/hooks/useTodo";
-import { Card, Flex, Select, SelectItem, TextInput, Title } from "@tremor/react";
+import { Button, Card, Flex, Icon, Select, SelectItem, Text, TextInput, Title } from "@tremor/react";
 import { LatLng } from "leaflet";
 import { useCallback, useState } from "react";
+import { XIcon } from "@heroicons/react/solid";
 
 interface Props {
     title: string;
@@ -15,7 +17,6 @@ interface Props {
     defaultStatus?: string;
     id?: string
 }
-
 
 export default function Task({ latlng, setPrompt, defaultTaskName, prompt, onSubmit, defaultStatus = "todo", defaultDescription = "", title, id }: Props) {
     const [description, setDescription] = useState(defaultDescription)
@@ -36,6 +37,8 @@ export default function Task({ latlng, setPrompt, defaultTaskName, prompt, onSub
         setPrompt(false)
     }, [id, description, status, latlng?.lat, latlng?.lng, onSubmit, setPrompt])
 
+    const address = `${latlng?.lat}, ${latlng?.lng}`
+
     if (!prompt) {
         return null;
     }
@@ -44,10 +47,11 @@ export default function Task({ latlng, setPrompt, defaultTaskName, prompt, onSub
         <Card className="w-1/2">
             <Flex flexDirection="row" className="w-full mb-6">
                 <Title>{title}</Title>
-                <a href="#" className="self-end text-xl" onClick={() => setPrompt(false)}>X</a>
+                <Icon icon={XIcon} className="self-end hover:cursor-pointer" onClick={() => setPrompt(false)} />
             </Flex>
             <TextInput name="description" placeholder="Description (Task Name)" defaultValue={defaultTaskName} className="mb-2" onValueChange={setDescription} />
-            {latlng && <TextInput name="latlng" placeholder="LatLng" value={`${latlng.lat}, ${latlng.lng}`} disabled={true} className="mb-2" />}
+            {latlng && <TextInput name="latlng" placeholder="LatLng" value={address} disabled={true} className="mb-1" />}
+            <Text className="mb-2">Location is not editable. Use the map view to create a new todo.</Text>
             <Select defaultValue={defaultStatus || "todo"} className="mb-6" onValueChange={setStatus}>
                 <SelectItem value="todo">Todo</SelectItem>
                 <SelectItem value="scheduled">Scheduled</SelectItem>
@@ -55,7 +59,7 @@ export default function Task({ latlng, setPrompt, defaultTaskName, prompt, onSub
             </Select>
 
             <Flex flexDirection="row" className="w-full justify-end">
-                <button className="p-2" onClick={onCreate}>Confirm</button>
+                <Button variant="primary" className="p-2" onClick={onCreate}>Confirm</Button>
             </Flex>
         </Card>
     </div>
