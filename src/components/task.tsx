@@ -1,8 +1,7 @@
-import useReverseGeocode from "@/hooks/useReverseGeocode";
-import { Todo } from "@/hooks/useTodo";
+import { LatLng, Todo } from "@/hooks/useTodo";
+import { XIcon } from "@heroicons/react/solid";
 import { Button, Card, Flex, Icon, Select, SelectItem, Text, TextInput, Title } from "@tremor/react";
 import { useCallback, useState } from "react";
-import { XIcon } from "@heroicons/react/solid";
 
 interface Props {
     title: string;
