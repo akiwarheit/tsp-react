@@ -37,12 +37,12 @@ Production Readiness:
 - [x] Backing services: Treat backing services as attached resources
 - [x] Build, release, run: Strictly separate build and run stages
 - [x] Processes: Execute the app as one or more stateless processes
-- [] Port binding: Export services via port binding
-- [] Concurrency: Scale out via the process model
-- [] Disposability: Maximize robustness with fast startup and graceful shutdown
+- [ ] Port binding: Export services via port binding
+- [ ] Concurrency: Scale out via the process model
+- [ ] Disposability: Maximize robustness with fast startup and graceful shutdown
 - [x] Dev/prod parity: Keep development, staging, and production as similar as possible
-- [] Logs: Treat logs as event streams
-- [] Admin processes: Run admin/management tasks as one-off processes
+- [ ] Logs: Treat logs as event streams
+- [ ] Admin processes: Run admin/management tasks as one-off processes
 
 Improvements:
 
