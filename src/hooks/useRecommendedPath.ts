@@ -45,8 +45,13 @@ function createDistanceMatrix(todos: Todo[]) {
 
 export default function useRecommendedPath(todos: Todo[]) {
     const distanceMatrix = useMemo(() => createDistanceMatrix(todos), [todos])
+    const bestRoute = useMemo(() => {
+        if (todos.length === 0) {
+            return []
+        }
 
-    const bestRoute = useMemo(() => evolveOnDistances(distanceMatrix), [distanceMatrix])
+        return evolveOnDistances(distanceMatrix)
+    }, [distanceMatrix, todos.length])
 
     return { bestRoute, distanceMatrix }
 }

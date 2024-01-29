@@ -1,7 +1,6 @@
 import useReverseGeocode from "@/hooks/useReverseGeocode";
 import { Todo } from "@/hooks/useTodo";
 import { Button, Card, Flex, Icon, Select, SelectItem, Text, TextInput, Title } from "@tremor/react";
-import { LatLng } from "leaflet";
 import { useCallback, useState } from "react";
 import { XIcon } from "@heroicons/react/solid";
 

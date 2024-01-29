@@ -18,7 +18,7 @@ function Task({ todo }: { todo: Todo }) {
                         <div className="h-8 w-8 bg-blue-500 rounded-full ring-8 ring-white flex items-center justify-center">
                             <svg className="text-white h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                     d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                             </svg>
                         </div>

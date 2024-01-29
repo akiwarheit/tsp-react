@@ -1,11 +1,10 @@
 'use client'
 
 import { Todo } from "@/hooks/useTodo"
-import { LatLng, LeafletMouseEvent, Popup } from "leaflet"
+import { LatLng, LeafletMouseEvent } from "leaflet"
 import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
 import "leaflet/dist/leaflet.css"
-import { useState } from "react"
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet"
 
 interface AddTodoProps {
@@ -13,11 +12,9 @@ interface AddTodoProps {
 }
 
 function AddTodo({ onClick }: AddTodoProps) {
-    const [position, setPosition] = useState<any>(null)
     const map = useMapEvents({
         click(event: LeafletMouseEvent) {
             if (event.latlng) {
-                setPosition(event.latlng)
                 onClick(event.latlng)
             }
         }
