@@ -7,7 +7,6 @@ const nextConfig = {
         hostname: 'cdn.freebiesupply.com',
         port: '',
         pathname: '/logos/**',
-
       }
     ],
   },
