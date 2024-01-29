@@ -49,3 +49,25 @@ Improvements:
 - Caching reverse geocode address to avoid being rate limited
 - Pagination
 - Excluding done from recommended path
+
+## The GA Code
+
+```
+/**
+ * https://bitbucket.org/akiwarheit/tsp-react-native/src/master/App/Lib/GeneticAlgorithm.js
+ * 
+ * Each chromosome represents a possible route for the salesman to traverse all the cities.
+ * The genes in the chromosome represent the order in which the cities are visited.
+ * The fitness can be inversely proportional to the total distance traveled. The lower the distance, the higher the fitness.
+ * 
+ * Repeated functions:
+ * Crossover: Create offspring by combining the genetic material of two parents. One-point or two-point crossover methods are often used.
+ * Mutation: Introduce small random changes in the offspring to maintain diversity in the population. Mutation can swap or change the order of genes.
+ * Replace: Replace some individuals in the population with the new offspring.
+ * 
+ * The entire evolution keeps track of the best solution based off the fitness function. (least total distance travelled)
+ * 
+ * @param distances 
+ */
+export function evolveOnDistances(distances: number[][])
+```

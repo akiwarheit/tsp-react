@@ -1,7 +1,8 @@
 /**
  * https://bitbucket.org/akiwarheit/tsp-react-native/src/master/App/Lib/GeneticAlgorithm.js
  * 
- * Each chromosome represents a possible route for the salesman to traverse all the cities. The genes in the chromosome represent the order in which the cities are visited.
+ * Each chromosome represents a possible route for the salesman to traverse all the cities.
+ * The genes in the chromosome represent the order in which the cities are visited.
  * The fitness can be inversely proportional to the total distance traveled. The lower the distance, the higher the fitness.
  * 
  * Repeated functions:
