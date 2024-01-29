@@ -9,12 +9,19 @@ import TodosList from "@/components/todosList";
 import useAuthentication from "@/hooks/useAuthentication";
 import useRecommendedPath from "@/hooks/useRecommendedPath";
 import useTodo, { Todo } from "@/hooks/useTodo";
-import { UserGroupIcon, UserIcon, ClipboardCheckIcon, MapIcon, ChartBarIcon } from "@heroicons/react/outline";
-import { BarChart, Card, Col, DonutChart, Grid, Subtitle, Tab, TabGroup, TabList, TabPanel, TabPanels, Title, Text, Metric } from "@tremor/react";
+import { ChartBarIcon, ClipboardCheckIcon, MapIcon } from "@heroicons/react/outline";
+import { BarChart, Card, Col, DonutChart, Grid, Metric, Subtitle, Tab, TabGroup, TabList, TabPanel, TabPanels, Title } from "@tremor/react";
 import { LatLng } from "leaflet";
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
+const Map = dynamic(
+  () => import('@/components/map'),
+  {
+    loading: () => <p>Loading</p>,
+    ssr: false
+  }
+)
 
 export default function Home() {
   const [prompt, setPrompt] = useState(false)
@@ -31,17 +38,6 @@ export default function Home() {
     initialise()
   }, [initialise])
 
-
-  /**
-   * Workaround
-   */
-  const Map = useMemo(() => dynamic(
-    () => import('@/components/map'),
-    {
-      loading: () => <p>Loading</p>,
-      ssr: false
-    }
-  ), [])
 
   const position = useMemo(() => {
     return new LatLng(-36.8698114, 174.7782284)
@@ -162,30 +158,6 @@ export default function Home() {
           </TabPanels>
         </TabGroup>
       </Card>
-
-
-
-
-      {/* <Task title="Create a new task" latlng={latlng} setPrompt={setPrompt} prompt={prompt} defaultTaskName="New Task" onSubmit={add} />
-      {todoToEdit && <Task title="Edit task" latlng={todoToEdit.location} setPrompt={setEdit} prompt={edit} defaultTaskName={todoToEdit?.description} defaultStatus={todoToEdit.status} onSubmit={editTodo} id={todoToEdit.id} />}
-      <Grid numItems={6} className="gap-6">
-        {user && <Col numColSpan={6}>
-          <Header user={user} todos={todos} onSignOut={signOutFromApp} />
-        </Col>}
-        <Col numColSpan={3} >
-          <Card>
-            <Title>Task Map</Title>
-            <Subtitle className="mb-6">Click on a location in the map to add a new todo.</Subtitle>
-            <Map position={position} zoom={12} todos={todos} onClick={promptNewTodo} />
-          </Card>
-        </Col>
-        <Col numColSpan={3}>
-          <TodosList todos={todos} remove={remove} edit={promptEditTodo} />
-        </Col>
-        <Col numColSpan={2}>
-          <RecommendedPath todos={todos} recommendedOrder={bestRoute} />
-        </Col>
-      </Grid> */}
     </main >
   );
 }
