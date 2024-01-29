@@ -4,10 +4,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'www.lego.com',
+        hostname: 'cdn.freebiesupply.com',
         port: '',
-        pathname: '/cdn/**',
-      },
+        pathname: '/logos/**',
+
+      }
     ],
   },
 };
